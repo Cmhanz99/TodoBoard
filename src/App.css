@@ -28,13 +28,19 @@
 }
 
 .header_todo > button {
-    padding: 5px 10px;
+    width: 50px;
+    height: 30px;
     border: none;
     background: black;
     color: white;
     border-radius: 5px;
     cursor: pointer;
     transition: all ease .5s;
+    position: relative;
+}
+
+.header_todo > button > i {
+    font-size: 16px;
 }
 
 .header_todo > button.btn_dark {
@@ -66,11 +72,10 @@
 }
 
 .todo_board {
-    width: 80%;
     display: grid;
     grid-template-columns: repeat(3, 300px);
     gap: 20px;
-    padding: 10px 30px;
+    padding: 10px 0px;
     justify-content: center;
     border-top: 1px solid #dcdcdc;
 }

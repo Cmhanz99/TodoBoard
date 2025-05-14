@@ -9,10 +9,10 @@ const App = () => {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
   const [dark, setDark] = useState(() => {
-  const saveDark = localStorage.getItem("dark");
-  if (saveDark === null || saveDark === "undefined") {
-    return false;
-  }
+    const saveDark = localStorage.getItem("dark");
+    if (saveDark === null || saveDark === "undefined") {
+      return false;
+    }
     return JSON.parse(saveDark);
   });
 
@@ -22,8 +22,8 @@ const App = () => {
   }, [todos, dark]);
 
   const handleClick = () => {
-    setDark(!dark)
-  }
+    setDark(!dark);
+  };
 
   const handleDelete = (index) => {
     const updateTodo = todos.filter((_, i) => index !== i);
@@ -31,15 +31,20 @@ const App = () => {
   };
 
   return (
-    <div className={`app_todo ${dark ? "active" : ''}`}>
+    <div className={`app_todo ${dark ? "active" : ""}`}>
       <div className="header_todo">
         <h1>02-Todo-Board</h1>
-        <button onClick={handleClick}
-        className={dark ? "btn_dark" : ""}
-        >{dark ? "Light" : "Dark"}</button>
+        <button onClick={handleClick} className={dark ? "btn_dark" : ""}>
+          <i className={`fa fa-${dark ? "sun" : "moon"}`}></i>
+        </button>
       </div>
       <Input setTodos={setTodos} todos={todos} />
-      <Board setTodos={setTodos} handleDelete={handleDelete} todos={todos} dark={dark} />
+      <Board
+        setTodos={setTodos}
+        handleDelete={handleDelete}
+        todos={todos}
+        dark={dark}
+      />
     </div>
   );
 };
